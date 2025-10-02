@@ -8,21 +8,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wallace.spring.boot.domain.dtos.UserResponseDTO;
 import com.wallace.spring.boot.domain.entities.User;
 import com.wallace.spring.boot.domain.services.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
 
 	@GetMapping
-	public ResponseEntity<List<User>> findAll() {
-		
-		List<User> list = userService.findAll();
+	public ResponseEntity<List<UserResponseDTO>> findAll() {
 
-		return ResponseEntity.ok().body(list);
+		List<User> list = userService.findAll();
+		List<UserResponseDTO> listResponse = list.stream().map(UserResponseDTO::new).toList();
+
+		return ResponseEntity.ok().body(listResponse);
 	}
 }
