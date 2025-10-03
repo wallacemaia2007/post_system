@@ -7,7 +7,9 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+import com.wallace.spring.boot.domain.dtos.AuthorResponseDTO;
+
+@Document(collection = "post")
 public class Post implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -16,9 +18,9 @@ public class Post implements Serializable {
 	private String title;
 	private LocalDate date;
 	private String description;
-	private User author;
+	private AuthorResponseDTO author;
 
-	public Post(String id, String title, LocalDate date, String description, User author) {
+	public Post(String id, String title, LocalDate date, String description, AuthorResponseDTO author) {
 		this.author = author;
 		this.id = id;
 		this.title = title;
@@ -61,11 +63,11 @@ public class Post implements Serializable {
 		this.description = description;
 	}
 
-	public User getAuthor() {
+	public AuthorResponseDTO getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(User author) {
+	public void setAuthor(AuthorResponseDTO author) {
 		this.author = author;
 	}
 
