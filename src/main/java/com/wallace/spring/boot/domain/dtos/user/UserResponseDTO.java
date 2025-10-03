@@ -1,4 +1,4 @@
-package com.wallace.spring.boot.domain.dtos;
+package com.wallace.spring.boot.domain.dtos.user;
 
 import com.wallace.spring.boot.domain.entities.User;
 

@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.wallace.spring.boot.domain.dtos.AuthorResponseDTO;
+import com.wallace.spring.boot.domain.dtos.post.AuthorResponseDTO;
 
 @Document(collection = "comment")
 public class Comment implements Serializable {

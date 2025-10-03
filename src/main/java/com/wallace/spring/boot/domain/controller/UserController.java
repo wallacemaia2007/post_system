@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wallace.spring.boot.domain.dtos.PostResponseDTO;
-import com.wallace.spring.boot.domain.dtos.UserRequestDTO;
-import com.wallace.spring.boot.domain.dtos.UserResponseDTO;
+import com.wallace.spring.boot.domain.dtos.post.PostResponseDTO;
+import com.wallace.spring.boot.domain.dtos.user.UserRequestDTO;
+import com.wallace.spring.boot.domain.dtos.user.UserResponseDTO;
 import com.wallace.spring.boot.domain.entities.Post;
 import com.wallace.spring.boot.domain.entities.User;
 import com.wallace.spring.boot.domain.services.UserService;

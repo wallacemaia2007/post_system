@@ -9,7 +9,7 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.wallace.spring.boot.domain.dtos.AuthorResponseDTO;
+import com.wallace.spring.boot.domain.dtos.post.AuthorResponseDTO;
 
 @Document(collection = "post")
 public class Post implements Serializable {

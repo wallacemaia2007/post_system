@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import com.wallace.spring.boot.domain.dtos.AuthorResponseDTO;
+import com.wallace.spring.boot.domain.dtos.post.AuthorResponseDTO;
 import com.wallace.spring.boot.domain.entities.Comment;
 import com.wallace.spring.boot.domain.entities.Post;
 import com.wallace.spring.boot.domain.entities.User;

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wallace.spring.boot.domain.dtos.UserRequestDTO;
+import com.wallace.spring.boot.domain.dtos.user.UserRequestDTO;
 import com.wallace.spring.boot.domain.entities.User;
 import com.wallace.spring.boot.domain.repository.UserRepository;
 import com.wallace.spring.boot.exceptions.UserNotFoundException;
