@@ -3,12 +3,17 @@ package com.wallace.spring.boot.domain.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wallace.spring.boot.domain.dtos.UserRequestDTO;
 import com.wallace.spring.boot.domain.dtos.UserResponseDTO;
 import com.wallace.spring.boot.domain.entities.User;
 import com.wallace.spring.boot.domain.services.UserService;
@@ -28,7 +33,7 @@ public class UserController {
 
 		return ResponseEntity.ok().body(listResponse);
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<UserResponseDTO> findById(@PathVariable String id) {
 
@@ -36,5 +41,15 @@ public class UserController {
 		UserResponseDTO userResponse = new UserResponseDTO(user);
 
 		return ResponseEntity.ok().body(userResponse);
+	}
+
+	@PostMapping
+	public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserRequestDTO UserRequestDTO) {
+
+		User user = userService.createUser(UserRequestDTO);
+		UserResponseDTO userResponseDTO = new UserResponseDTO(user);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(userResponseDTO);
+
 	}
 }

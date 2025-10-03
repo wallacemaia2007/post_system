@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wallace.spring.boot.domain.dtos.UserRequestDTO;
 import com.wallace.spring.boot.domain.entities.User;
 import com.wallace.spring.boot.domain.repository.UserRepository;
 import com.wallace.spring.boot.exceptions.ObjectNotFoundException;
@@ -21,6 +22,13 @@ public class UserService {
 
 	public User findById(String id) {
 		return userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado!"));
+	}
+
+	public User createUser(UserRequestDTO userRequestDTO) {
+		User user = new User(null, userRequestDTO.name(), userRequestDTO.email());
+		userRepository.save(user);
+
+		return user;
 	}
 
 }
