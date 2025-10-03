@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wallace.spring.boot.domain.dtos.PostResponse;
+import com.wallace.spring.boot.domain.dtos.PostResponseDTO;
 import com.wallace.spring.boot.domain.dtos.UserRequestDTO;
 import com.wallace.spring.boot.domain.dtos.UserResponseDTO;
 import com.wallace.spring.boot.domain.entities.Post;
@@ -76,10 +76,10 @@ public class UserController {
 	}
 
 	@GetMapping("/{id}/posts")
-	public ResponseEntity<List<PostResponse>> findPostsById(@PathVariable String id) {
+	public ResponseEntity<List<PostResponseDTO>> findPostsById(@PathVariable String id) {
 		User user = userService.findById(id);
 		List<Post> list = user.getPost();
-		List<PostResponse> listResponse = list.stream().map(PostResponse::new).toList();
+		List<PostResponseDTO> listResponse = list.stream().map(PostResponseDTO::new).toList();
 
 		return ResponseEntity.ok().body(listResponse);
 
