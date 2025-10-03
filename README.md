@@ -368,5 +368,5 @@ Este projeto foi desenvolvido e evoluído a partir do curso
 **"Java COMPLETO: Programação Orientada a Objetos + Projetos"** do professor Nelio Alves (Udemy).  
 
 ### Certificado
-[![Certificado](./assets/Certificado.jpg)](./certificado.pdf)
+[![Certificado](./assets/Certificado.jpg)](./Certificado.pdf)
 
