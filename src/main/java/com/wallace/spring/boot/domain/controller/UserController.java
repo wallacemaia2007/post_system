@@ -78,7 +78,7 @@ public class UserController {
 	@GetMapping("/{id}/posts")
 	public ResponseEntity<List<PostResponseDTO>> findPostsById(@PathVariable String id) {
 		User user = userService.findById(id);
-		List<Post> list = user.getPost();
+		List<Post> list = user.getPosts();
 		List<PostResponseDTO> listResponse = list.stream().map(PostResponseDTO::new).toList();
 
 		return ResponseEntity.ok().body(listResponse);

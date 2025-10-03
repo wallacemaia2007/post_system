@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.wallace.spring.boot.domain.dtos.user.UserRequestDTO;
 import com.wallace.spring.boot.domain.entities.User;
+import com.wallace.spring.boot.domain.repository.PostRepository;
 import com.wallace.spring.boot.domain.repository.UserRepository;
 import com.wallace.spring.boot.exceptions.UserNotFoundException;
 
@@ -15,6 +16,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private PostRepository postRepository;
 
 	public List<User> findAll() {
 		return userRepository.findAll();
@@ -32,8 +36,9 @@ public class UserService {
 	}
 
 	public void deleteById(String id) {
-		findById(id);
-		userRepository.deleteById(id);
+	    User user = findById(id);
+	    postRepository.deleteAll(user.getPosts());
+	    userRepository.deleteById(id);
 	}
 
 	public User uptadeUser(String id, UserRequestDTO userRequestDTO) {
