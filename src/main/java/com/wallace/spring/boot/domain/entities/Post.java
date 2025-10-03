@@ -2,6 +2,8 @@ package com.wallace.spring.boot.domain.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
@@ -19,6 +21,8 @@ public class Post implements Serializable {
 	private LocalDate date;
 	private String description;
 	private AuthorResponseDTO author;
+	
+	private List<Comment> comments = new ArrayList<>();
 
 	public Post(String id, String title, LocalDate date, String description, AuthorResponseDTO author) {
 		this.author = author;
@@ -69,6 +73,14 @@ public class Post implements Serializable {
 
 	public void setAuthor(AuthorResponseDTO author) {
 		this.author = author;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	@Override
