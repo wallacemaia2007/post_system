@@ -50,8 +50,8 @@ public class PostController {
 	public ResponseEntity<List<PostResponseDTO>> findByTitle(
 			@RequestParam(value = "text", defaultValue = "") String text) {
 
-		text = URL.deccodeParam(text);
-		List<Post> list = postService.finByTitle(text);
+		text = URL.decodeParam(text);
+		List<Post> list = postService.findByTitle(text);
 		List<PostResponseDTO> listResponse = list.stream().map(PostResponseDTO::new).toList();
 
 		return ResponseEntity.ok().body(listResponse);
@@ -78,7 +78,7 @@ public class PostController {
 	@PutMapping("/{id}")
 	public ResponseEntity<PostResponseDTO> uptadePost(@PathVariable String id,
 			@RequestBody PostRequestDTO postRequestDTO) {
-		Post post = postService.createPost(id, postRequestDTO);
+		Post post = postService.updatePost(id, postRequestDTO);
 		PostResponseDTO postResponseDTO = new PostResponseDTO(post);
 
 		return ResponseEntity.ok(postResponseDTO);

@@ -20,7 +20,7 @@ public class PostService {
 		return postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("Invalid id for post"));
 	}
 
-	public List<Post> finByTitle(String text) {
+	public List<Post> findByTitle(String text) {
 		return postRepository.findByTitleContainingIgnoreCase(text);
 	}
 
@@ -37,7 +37,7 @@ public class PostService {
 
 	}
 
-	public Post createPost(String id, PostRequestDTO postRequestDTO) {
+	public Post updatePost(String id, PostRequestDTO postRequestDTO) {
 		Post post = findById(id);
 		post.setDate(postRequestDTO.date());
 		post.setAuthor(postRequestDTO.author());
