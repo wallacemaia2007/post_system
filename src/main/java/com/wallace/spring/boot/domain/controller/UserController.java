@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wallace.spring.boot.domain.dtos.PostResponse;
 import com.wallace.spring.boot.domain.dtos.UserRequestDTO;
 import com.wallace.spring.boot.domain.dtos.UserResponseDTO;
+import com.wallace.spring.boot.domain.entities.Post;
 import com.wallace.spring.boot.domain.entities.User;
 import com.wallace.spring.boot.domain.services.UserService;
 
@@ -68,8 +70,18 @@ public class UserController {
 			@RequestBody UserRequestDTO userRequestDTO) {
 		User user = userService.uptadeUser(id, userRequestDTO);
 		UserResponseDTO userResponseDTO = new UserResponseDTO(user);
-		
+
 		return ResponseEntity.ok(userResponseDTO);
+
+	}
+
+	@GetMapping("/{id}/posts")
+	public ResponseEntity<List<PostResponse>> findPostsById(@PathVariable String id) {
+		User user = userService.findById(id);
+		List<Post> list = user.getPost();
+		List<PostResponse> listResponse = list.stream().map(PostResponse::new).toList();
+
+		return ResponseEntity.ok().body(listResponse);
 
 	}
 }
