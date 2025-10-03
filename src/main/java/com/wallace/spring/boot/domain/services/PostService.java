@@ -1,5 +1,7 @@
 package com.wallace.spring.boot.domain.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class PostService {
 
 	public Post findById(String id) {
 		return postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("Invalid id for post"));
+	}
+	
+	public List<Post> finByTitle(String text){
+		return postRepository.findByTitleContainingIgnoreCase(text);
 	}
 
 }
